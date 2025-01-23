@@ -101,7 +101,7 @@ testing {
                 implementation(project())
                 implementation(sourceSets.test.get().output)
                 implementation(sourceSets.test.get().runtimeClasspath)
-                implementation(project.dependencies.platform("org.springframework.boot:spring-boot-dependencies:3.2.3"))
+                implementation(project.dependencies.platform("org.springframework.boot:spring-boot-dependencies:3.4.2"))
 
                 implementation("org.flywaydb:flyway-core")
                 implementation("org.flywaydb:flyway-database-postgresql")
