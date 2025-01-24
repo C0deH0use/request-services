@@ -1,4 +1,4 @@
-FROM gradle:8.4.0-jdk21 AS build-stage
+FROM gradle:8.12.0-jdk21 AS build-stage
 
 WORKDIR /home/gradle
 COPY . .
