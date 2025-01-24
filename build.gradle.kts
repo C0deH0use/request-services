@@ -16,7 +16,7 @@ checkstyle {
 }
 
 group = "pl.codehouse.restaurant"
-version = "0.0.1-SNAPSHOT"
+version = "0.8.0-SNAPSHOT"
 
 val junitVersion: String by project
 val junitPlatformVersion: String by project
