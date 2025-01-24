@@ -21,11 +21,12 @@ import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.shaded.org.awaitility.Awaitility;
-import pl.codehouse.restaurant.orders.Context;
-import pl.codehouse.restaurant.orders.ExecutionResult;
+import pl.codehouse.commons.Context;
+import pl.codehouse.commons.ExecutionResult;
 import pl.codehouse.restaurant.orders.TestcontainersConfiguration;
 import pl.codehouse.restaurant.orders.request.PackingActionResult;
 import pl.codehouse.restaurant.orders.request.RequestStatus;
@@ -63,7 +64,7 @@ class ShelfEventListenerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
+    @MockitoBean
     private PackingCommand packingCommand;
 
     @Captor

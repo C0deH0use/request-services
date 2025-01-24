@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import pl.codehouse.restaurant.orders.Context;
-import pl.codehouse.restaurant.orders.ExecutionResult;
+import pl.codehouse.commons.Context;
+import pl.codehouse.commons.ExecutionResult;
 import pl.codehouse.restaurant.orders.request.ShelfEventDto;
 
 @Component

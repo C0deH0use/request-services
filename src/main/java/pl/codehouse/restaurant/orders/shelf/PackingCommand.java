@@ -2,9 +2,9 @@ package pl.codehouse.restaurant.orders.shelf;
 
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
-import pl.codehouse.restaurant.orders.Command;
-import pl.codehouse.restaurant.orders.Context;
-import pl.codehouse.restaurant.orders.ExecutionResult;
+import pl.codehouse.commons.Command;
+import pl.codehouse.commons.Context;
+import pl.codehouse.commons.ExecutionResult;
 import pl.codehouse.restaurant.orders.request.PackingActionResult;
 import pl.codehouse.restaurant.orders.request.RequestDto;
 import pl.codehouse.restaurant.orders.request.RequestMenuItem;

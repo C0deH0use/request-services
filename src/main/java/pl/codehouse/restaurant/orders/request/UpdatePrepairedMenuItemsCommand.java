@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import pl.codehouse.restaurant.orders.Command;
-import pl.codehouse.restaurant.orders.Context;
-import pl.codehouse.restaurant.orders.ExecutionResult;
+import pl.codehouse.commons.Command;
+import pl.codehouse.commons.Context;
+import pl.codehouse.commons.ExecutionResult;
 import pl.codehouse.restaurant.orders.shelf.PackingStatus;
 import reactor.core.publisher.Mono;
 
