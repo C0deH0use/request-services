@@ -5,7 +5,7 @@ plugins {
     checkstyle
     `jvm-test-suite`
     `jacoco-report-aggregation`
-    id("org.springframework.boot") version "3.3.3"
+    id("org.springframework.boot") version "3.4.2"
     id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -17,9 +17,11 @@ checkstyle {
 
 group = "pl.codehouse.restaurant"
 version = "0.0.1-SNAPSHOT"
-val junitVersion = "5.11.4"
-val junitPlatformVersion = "1.10.2"
-val cucumberVersion = "7.20.1"
+
+val junitVersion: String by project
+val junitPlatformVersion: String by project
+val cucumberVersion: String by project
+val burgerCommonsVersion: String by project
 
 java {
     toolchain {
@@ -29,6 +31,13 @@ java {
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.github.com/C0deH0use/burger-commons")
+        credentials {
+            username = project.findProperty("github.user") as String? ?: System.getenv("GITHUB_USER")
+            password = project.findProperty("github.token") as String? ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 idea {
@@ -42,6 +51,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.postgresql:r2dbc-postgresql")
 
+    implementation("pl.codehouse.commons:burger-commons:$burgerCommonsVersion")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     implementation("org.springframework.boot:spring-boot-starter-validation")

@@ -1,12 +1,12 @@
 package pl.codehouse.restaurant.orders;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import pl.codehouse.commons.ExecutionResult;
 
 @DisplayName("ExecutionResult Tests")
 class ExecutionResultTest {
