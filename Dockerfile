@@ -5,7 +5,7 @@ COPY . .
 
 RUN gradle clean build --no-daemon
 
-FROM azul/zulu-openjdk:21
+FROM azul/zulu-openjdk:23
 
 COPY --from=build-stage /home/gradle/build/libs/request-service-*.jar /request-service.jar
 
