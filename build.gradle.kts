@@ -15,13 +15,14 @@ checkstyle {
     sourceSets = listOf(project.sourceSets.main.get())
 }
 
-group = "pl.codehouse.restaurant"
-version = "0.8.0-SNAPSHOT"
-
+val applicationVersion: String by project
 val junitVersion: String by project
 val junitPlatformVersion: String by project
 val cucumberVersion: String by project
 val burgerCommonsVersion: String by project
+
+group = "pl.codehouse.restaurant"
+version = applicationVersion
 
 java {
     toolchain {

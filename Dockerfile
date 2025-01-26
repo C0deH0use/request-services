@@ -1,9 +1,12 @@
 FROM gradle:8.12.0-jdk21 AS build-stage
 
+ARG GITHUB_USER
+ARG GITHUB_TOKEN
+
 WORKDIR /home/gradle
 COPY . .
 
-RUN gradle clean build --no-daemon
+RUN gradle clean build -x test -x integrationTest --no-daemon -Pgithub.user=${GITHUB_USER} -Pgithub.token=${GITHUB_TOKEN}
 
 FROM azul/zulu-openjdk:21
 
