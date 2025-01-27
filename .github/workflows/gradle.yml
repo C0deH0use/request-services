@@ -105,7 +105,7 @@ jobs:
           properties: 'applicationVersion'
 
       - id: commit
-        uses: prompt/actions-commit-hash@01d19a83c242e1851c9aa6cf9625092ecd095d09
+        uses: prompt/actions-commit-hash@c5ad2f68ba7eb1ef85bf910e2cc0278cca92d987
 
       - name: Application release version
         run: |  
