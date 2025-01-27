@@ -77,16 +77,23 @@ class RequestServiceIntegrationTest {
     ) {
         flyway.clean();
         flyway.migrate();
-        getInitRequests()
-                .doOnNext(o -> System.out.println("Inserting object: " + o.toString()))
-                .flatMap(entityTemplate::insert)
-                .collectList()
-                .block();
-        getInitRequestMenuItems()
-                .doOnNext(o -> System.out.println("Inserting object: " + o.toString()))
-                .flatMap(entityTemplate::insert)
-                .collectList()
-                .block();
+        List<Mono<Record>> initialRequestsMono = getInitRequests()
+                .stream()
+                .peek(o -> System.out.println("Inserting object: " + o.toString()))
+                .map(entityTemplate::insert)
+                .toList();
+        Flux.concat(initialRequestsMono)
+                .doOnTerminate(() -> System.out.println("All tasks completed"))
+                .blockLast();
+
+        List<Mono<Record>> requestsMenuItemMono = getInitRequestMenuItems()
+                .stream()
+                .peek(o -> System.out.println("Inserting object: " + o.toString()))
+                .map(entityTemplate::insert)
+                .toList();
+        Flux.concat(requestsMenuItemMono)
+                .doOnTerminate(() -> System.out.println("All tasks completed"))
+                .blockLast();
 
         Map<String, Object> testConsumerProps = KafkaTestUtils.consumerProps(
                 kafkaContainer.getBootstrapServers(),
@@ -181,8 +188,8 @@ class RequestServiceIntegrationTest {
         totalItemsCount.getAndIncrement();
     }
 
-    private static @NotNull Flux<Record> getInitRequests() {
-        return Flux.just(
+    private static @NotNull List<Record> getInitRequests() {
+        return List.of(
                 // request entity One
                 aRequestEntity().build(),
                 aRequestEntity(REQUEST_2_ID)
@@ -196,8 +203,8 @@ class RequestServiceIntegrationTest {
         );
     }
 
-    private static @NotNull Flux<Record> getInitRequestMenuItems() {
-        return Flux.just(
+    private static @NotNull List<Record> getInitRequestMenuItems() {
+        return List.of(
                 // Menu item entities
                 aMenuItemEntityOne().build(),
                 aMenuItemEntityTwo().build(),

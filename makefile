@@ -1,7 +1,7 @@
 .PHONY: build run run-dependencies run-db destroy
 
 build:
-	docker compose build api
+	docker compose --profile app --profile dependencies build api
 
 run: build
 	docker compose up api
