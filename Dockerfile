@@ -1,4 +1,4 @@
-FROM gradle:8.12.0-jdk21 AS build-stage
+FROM gradle:8.12.1-jdk21 AS build-stage
 
 ARG GITHUB_USER
 ARG GITHUB_TOKEN
