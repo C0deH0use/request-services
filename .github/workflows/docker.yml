@@ -1,0 +1,9 @@
+name: Docker Publish Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    uses: c0deh0use/burger-commons/.github/workflows/shared-docker.yml@main
