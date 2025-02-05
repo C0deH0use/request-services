@@ -6,4 +6,4 @@ on:
 
 jobs:
   build:
-    uses: c0deh0use/burger-commons/.github/shared-docker.yml@main
+    uses: c0deh0use/burger-commons/.github/workflows/shared-docker.yml@main

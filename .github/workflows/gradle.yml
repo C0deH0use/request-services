@@ -8,4 +8,4 @@ on:
 
 jobs:
   build:
-    uses: c0deh0use/burger-commons/.github/shared-gradle.yml@main
+    uses: c0deh0use/burger-commons/.github/workflows/shared-gradle.yml@main
