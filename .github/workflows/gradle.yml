@@ -1,4 +1,4 @@
-name: Main CI Pipelines
+name: Gradle build and test workflow
 
 on:
   push:
@@ -7,5 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    uses: c0deh0use/burger-commons/.github/workflows/shared-gradle.yml@main
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Shared Gradle build and test pipeline
+        uses: c0deh0use/burger-commons/.github/workflows/shared-gradle.yml@main
