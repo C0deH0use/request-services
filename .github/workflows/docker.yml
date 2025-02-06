@@ -1,9 +1,19 @@
 name: Docker Publish Pipeline
+workflow_run:
+  workflows: ["Gradle build and test workflow"]  # Name of the workflow to depend on
+  types:
+    - completed
+  branches: [ main ]
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
-    uses: c0deh0use/burger-commons/.github/workflows/shared-docker.yml@main
+  docker-build-and-publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Run Docker Build and publish workflow
+        uses: c0deh0use/burger-commons/.github/workflows/shared-docker.yml@main
